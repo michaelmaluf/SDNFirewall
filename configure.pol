@@ -24,5 +24,25 @@
 # subnet other than /32 must be 0.
 #
 # Example Rules:
-1,Block,-,-,10.0.0.1/32,10.0.1.0/24,6,-,80,Block 10.0.0.1 from accessing a web server on the 10.0.1.0/24 network
-2,Allow,-,-,10.0.0.1/32,10.0.1.125/32,6,-,80,Allow 10.0.0.1 to access a web server on 10.0.1.125 overriding previous rule
+
+1,Block,00:00:00:0e:03:1e,-,10.0.30.4/32,-,6,80,-,Block 10.0.30.4 from initiating a TCP connection on all networks
+2,Block,00:00:00:0f:04:1e,-,10.0.30.5/32,-,-,-,-,Block 10.0.30.5 from initiating a network connection on all networks
+3,Block,-,00:00:00:0f:04:1e,-,10.0.30.5/32,-,-,-,Block all networks from initiating a network connection to 10.0.30.5
+4,Block,-,-,-,10.0.0.0/24,6,-,-,Block all TCP network connections to HQ
+5,Block,-,-,-,10.0.0.0/24,17,-,-,Block all UDP network connections to HQ
+6,Block,-,-,10.0.30.0/24,10.0.0.0/24,-,-,-,Block all subnet 10.0.30.0/24 network connections to HQ
+7,Block,-,-,-,10.0.1.0/24,1,-,-,Block all ICMP network connections to US
+8,Block,-,-,-,10.0.20.0/24,1,-,-,Block all ICMP network connections to IN
+9,Block,-,-,-,10.0.40.0/24,1,-,-,Block all ICMP network connections to UK
+10,Allow,-,-,10.0.0.0/24,10.0.1.0/24,1,-,-,Allow ICMP network connections from HQ to US
+11,Allow,-,-,10.0.0.0/24,10.0.20.0/24,1,-,-,Allow ICMP network connections from HQ to IN
+12,Allow,-,-,10.0.0.0/24,10.0.40.0/24,1,-,-,Allow ICMP network connections from HQ to UK
+13,Block,00:00:00:0d:02:1e,-,10.0.30.3/32,-,6,80,-,Block 10.0.30.3 from sending http responses to all networks
+14,Block,00:00:00:0d:02:1e,-,10.0.30.3/32,-,6,443,-,Block 10.0.30.3 from sending https responses to all networks
+15,Block,-,-,10.0.40.128/30,10.0.1.32/30,6,-,9520,Block subnet 10.0.40.129/29 from sending TCP requests to port 9520 on subnet 10.0.1.32/30
+16,Block,-,-,10.0.20.124/30,10.0.1.32/30,6,-,9520,Block subnet 10.0.20.124/30 from sending TCP requests to port 9520 on subnet 10.0.1.32/30
+17,Block,-,-,10.0.1.125/32,10.0.1.32/30,6,-,9520,Block 10.0.1.125 from sending TCP requests to port 9520 on subnet 10.0.1.32/30
+18,Block,-,-,10.0.0.220/32,10.0.1.32/30,6,-,9520,Block 10.0.0.220 from sending TCP requests to port 9520 on subnet 10.0.1.32/30
+19,Block,-,-,10.0.1.1/32,-,17,-,-,Block 10.0.1.1 from sending UDP requests on all networks due to cloning
+20,Block,-,-,-,-,6,-,25,Block world accessing TCP Port 25 on any corporate subnet
+
