@@ -47,7 +47,7 @@ def firewall_policy_processing(policies):
     '''
 
     rules = []
-    DL_TYPE = 0x800
+    DL_TYPE = 0x0800
 
     for policy in policies:
         # Enter your code here to implement matching and block/allow rules.  See the links
