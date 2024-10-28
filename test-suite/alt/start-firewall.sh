@@ -15,6 +15,6 @@ cp alternate-configure.pol ~/pox/pox/firewall/config.pol
 cp sdn-firewall.py ~/pox/pox/firewall/sdnfirewall.py
 cp setup-firewall.py ~/pox/pox/firewall/setupfirewall.py
 pushd ~/pox
-#python pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning firewall.setupfirewall
+python pox.py log.level --DEBUG openflow.of_01 forwarding.l2_learning firewall.setupfirewall
 python pox.py openflow.of_01 forwarding.l2_learning firewall.setupfirewall
 popd

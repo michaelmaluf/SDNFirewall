@@ -67,13 +67,13 @@ def firewall_policy_processing(policies):
             rule.match.nw_dst = policy['ip-dst']
         if policy['ipprotocol'] != '-':
             rule.match.nw_proto = int(policy['ipprotocol'])
-        if policy['port-src'] != '-':
-            rule.match.tp_src = int(policy['port-src'])
-        if policy['port-dst'] != '-':
-            rule.match.tp_dst = int(policy['port-dst'])
-
+            if rule.match.nw_proto in [1, 6, 17]:
+                if policy['port-src'] != '-':
+                    rule.match.tp_src = int(policy['port-src'])
+                if policy['port-dst'] != '-':
+                    rule.match.tp_dst = int(policy['port-dst'])
         if policy['action'] == 'Allow':
-            rule.priority = 10000
+            rule.priority = 10001
             rule.actions.append(of.ofp_action_output(port=of.OFPP_NORMAL))
         else:
             rule.priority = 0
