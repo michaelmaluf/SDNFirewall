@@ -26,32 +26,33 @@
 # Example Rules:
 
 1,Block,-,-,10.0.30.4/32,-,6,-,-,Block CN4 from initiating a TCP connection on all networks
+
 2,Block,-,-,10.0.30.5/32,-,-,-,-,Block CN4 from initiating a network connection on all networks
 3,Block,-,-,-,10.0.30.5/32,-,-,-,Block all networks from initiating a network connection to CN5
 
-6,Block,-,-,10.0.30.0/24,10.0.0.0/24,-,-,-,Block all CN network connections to HQ
-7,Block,-,-,-,10.0.1.0/24,1,-,-,Block all ICMP network connections to US
-8,Block,-,-,-,10.0.20.0/24,1,-,-,Block all ICMP network connections to IN
-9,Block,-,-,-,10.0.40.0/24,1,-,-,Block all ICMP network connections to UK
-10,Allow,-,-,10.0.0.0/24,10.0.1.0/24,1,-,-,Allow ICMP network connections from HQ to US
-11,Allow,-,-,10.0.0.0/24,10.0.20.0/24,1,-,-,Allow ICMP network connections from HQ to IN
-12,Allow,-,-,10.0.0.0/24,10.0.40.0/24,1,-,-,Allow ICMP network connections from HQ to UK
+4,Block,-,-,10.0.30.0/24,10.0.0.0/24,-,-,-,Block all CN network connections to HQ
+5,Block,-,-,-,10.0.1.0/24,1,-,-,Block all ICMP network connections to US
+6,Block,-,-,-,10.0.20.0/24,1,-,-,Block all ICMP network connections to IN
+7,Block,-,-,-,10.0.40.0/24,1,-,-,Block all ICMP network connections to UK
+8,Allow,-,-,10.0.0.0/24,10.0.1.0/24,1,-,-,Allow ICMP network connections from HQ to US
+9,Allow,-,-,10.0.0.0/24,10.0.20.0/24,1,-,-,Allow ICMP network connections from HQ to IN
+10,Allow,-,-,10.0.0.0/24,10.0.40.0/24,1,-,-,Allow ICMP network connections from HQ to UK
 
-13,Block,00:00:00:0d:02:1e,-,10.0.30.3/32,-,6,80,-,Block CN3 from sending http responses to all networks
-14,Block,00:00:00:0d:02:1e,-,10.0.30.3/32,-,6,443,-,Block CN3 from sending https responses to all networks
+11,Block,00:00:00:0d:02:1e,-,10.0.30.3/32,-,6,80,-,Block CN3 from sending http responses to all networks
+12,Block,00:00:00:0d:02:1e,-,10.0.30.3/32,-,6,443,-,Block CN3 from sending https responses to all networks
 
-15,Block,-,-,10.0.40.128/30,10.0.1.32/30,6,-,9520,Block UK2-UK5 from sending TCP requests to port 9520 at US3-US4
-16,Block,-,-,10.0.20.124/30,10.0.1.32/30,6,-,9520,Block IN4-IN5 from sending TCP requests to port 9520 at US3-US4
-17,Block,-,-,10.0.1.125/32,10.0.1.32/30,6,-,9520,Block US5 from sending TCP requests to port 9520 at US3-US4
-18,Block,-,-,10.0.0.220/32,10.0.1.32/30,6,-,9520,Block HQ5 from sending TCP requests to port 9520 at US3-US4
+13,Block,-,-,10.0.40.128/30,10.0.1.32/30,6,-,9520,Block UK2-UK5 from sending TCP requests to port 9520 at US3-US4
+14,Block,-,-,10.0.20.124/30,10.0.1.32/30,6,-,9520,Block IN4-IN5 from sending TCP requests to port 9520 at US3-US4
+15,Block,-,-,10.0.1.125/32,10.0.1.32/30,6,-,9520,Block US5 from sending TCP requests to port 9520 at US3-US4
+16,Block,-,-,10.0.0.220/32,10.0.1.32/30,6,-,9520,Block HQ5 from sending TCP requests to port 9520 at US3-US4
 
-19,Block,-,-,10.0.1.1/32,-,17,-,-,Block 10.0.1.1 from sending UDP requests on all networks due to cloning
-26,Block,00:00:00:01:00:1e,-,-,-,17,-,-,Block 10.0.1.1 from sending UDP requests on all networks due to cloning
+17,Block,00:00:00:01:00:1e,-,10.0.1.1/32,-,17,-,-,Block US1 from sending UDP requests on all networks due to cloning
 
-20,Block,-,-,-,10.0.1.0/24,6,-,25,Block world accessing TCP Port 25 on US subnet
-21,Block,-,-,-,10.0.30.0/24,6,-,25,Block world accessing TCP Port 25 on IN subnet
-22,Block,-,-,-,10.0.40.0/24,6,-,25,Block world accessing TCP Port 25 on UK subnet
-23,Allow,-,-,10.0.0.0/24,10.0.1.0/24,6,-,25,Allow HQ to access TCP Port 25 on US subnet
-24,Allow,-,-,10.0.0.0/24,10.0.30.0/24,6,-,25,Allow HQ to access TCP Port 25 on IN subnet
-25,Allow,-,-,10.0.0.0/24,10.0.40.0/24,6,-,25,Allow HQ to access TCP Port 25 on UK subnet
+18,Block,-,-,-,10.0.0.0/24,6,-,25,Block world accessing TCP Port 25 on HQ subnet
+19,Block,-,-,-,10.0.1.0/24,6,-,25,Block world accessing TCP Port 25 on US subnet
+20,Block,-,-,-,10.0.30.0/24,6,-,25,Block world accessing TCP Port 25 on IN subnet
+21,Block,-,-,-,10.0.40.0/24,6,-,25,Block world accessing TCP Port 25 on UK subnet
+22,Allow,-,-,10.0.0.0/24,10.0.1.0/24,6,-,25,Allow HQ to access TCP Port 25 on US subnet
+23,Allow,-,-,10.0.0.0/24,10.0.30.0/24,6,-,25,Allow HQ to access TCP Port 25 on IN subnet
+24,Allow,-,-,10.0.0.0/24,10.0.40.0/24,6,-,25,Allow HQ to access TCP Port 25 on UK subnet
 
