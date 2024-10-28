@@ -74,6 +74,7 @@ def firewall_policy_processing(policies):
 
         if policy['action'] == 'Allow':
             rule.priority = 10000
+            rule.actions.append(of.ofp_action_output(port=of.OFPP_NORMAL))
         else:
             rule.priority = 0
 
