@@ -64,7 +64,7 @@ def firewall_policy_processing(policies):
         if policy['ip-src'] != '-':
             rule.match.nw_src = policy['ip-src']
         if policy['ip-dst'] != '-':
-            rule.match.dl_src = policy['ip-dst']
+            rule.match.nw_dst = policy['ip-dst']
         if policy['ipprotocol'] != '-':
             rule.match.nw_proto = int(policy['ipprotocol'])
         if policy['port-src'] != '-':
